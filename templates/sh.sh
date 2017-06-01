@@ -6,6 +6,11 @@
 # %date%
 ## 
 
+function prog_usage
+{
+    echo "usage: "
+}
+
 function main
 {
     exit 0

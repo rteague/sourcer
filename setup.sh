@@ -22,17 +22,19 @@ function uninstallp
     return 0
 }
 
+function prog_usage
+{
+    echo "usage: bash setup.sh install | uninstall"
+}
+
 function main
 {
-    # usage report
-    declare -r USAGE="usage: bash setup.sh install | uninstall"
-    
     declare -ra ex_paths=(srcr.sh /usr/local/bin/srcr)
     declare -r template_paths=(templates "$HOME/.srcr")
 
     # add any other constants or setup variables 
     if [ $# -eq 0 ]; then
-        echo $USAGE
+        prog_usage
         exit 1
     fi
     
@@ -48,7 +50,7 @@ function main
             fi
             ;;
         * )
-            echo $USAGE
+            prog_usage
             exit 1
     esac
     
