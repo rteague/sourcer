@@ -16,25 +16,27 @@ function create_source
         local dt=$(date "+%a %B %d %Y")
         if [ "$extension" != "" ]; then
             if [ ! -f "$templates_dir/$extension.$extension" ]; then
-                echo "$PROG: could not find template for the \"$extension\" extension on"
+                echo "srcr: could not find template for the \"$extension\" extension on"
                 echo "    "$file
                 return 1
             fi
             cat "$templates_dir/$extension.$extension" | sed -e "s/%script_title%/$script_title/g" | sed -e "s/%author%/$author/g" | sed -e "s/%date%/$dt/g" > $file
         else
-            echo "$PROG: no extension specified for $file"
+            echo "srcr: no extension specified for $file"
             return 1
         fi
     done
 }
 
+function prog_usage
+{
+    echo "usage: srcr files..."
+}
+
 function main
 {
-    declare -r PROG="srcr"
-    declare -r USAGE="usage: $PROG files..."
-
     if [ $# -eq 0 ]; then
-        echo $USAGE
+        prog_usage
         exit 1
     fi
     
