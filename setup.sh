@@ -4,7 +4,7 @@
 
 function installp
 {
-    cp ${ex_paths[0]} ${ex_paths[1]} && chmod a+x ${ex_paths[1]}
+    cp ${ex_paths[0]} ${ex_paths[1]} && ! chmod a+x ${ex_paths[1]}
     cp -r ${template_paths[0]} ${template_paths[1]}
     
     echo "Installed..."
@@ -31,7 +31,7 @@ function main
 {
     declare -ra ex_paths=(srcr.sh /usr/local/bin/srcr)
     declare -r template_paths=(templates "$HOME/.srcr")
-
+    
     # add any other constants or setup variables 
     if [ $# -eq 0 ]; then
         prog_usage

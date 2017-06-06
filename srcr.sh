@@ -20,7 +20,10 @@ function create_source
                 echo "    "$file
                 return 1
             fi
-            cat "$templates_dir/$extension.$extension" | sed -e "s/%script_title%/$script_title/g" | sed -e "s/%author%/$author/g" | sed -e "s/%date%/$dt/g" > $file
+            cat "$templates_dir/$extension.$extension" | \
+                sed -e "s/%script_title%/$script_title/g" | \
+                sed -e "s/%author%/$author/g" | \
+                sed -e "s/%date%/$dt/g" > $file
         else
             echo "srcr: no extension specified for $file"
             return 1
